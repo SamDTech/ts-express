@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var controller_1 = require("./decorators/controller");
 var routes_1 = require("./decorators/routes");
 var LoginController = /** @class */ (function () {
     function LoginController() {
@@ -23,7 +24,7 @@ var LoginController = /** @class */ (function () {
         __metadata("design:returntype", void 0)
     ], LoginController.prototype, "getLogin", null);
     LoginController = __decorate([
-        controller('/')
+        controller_1.controller('/auth')
     ], LoginController);
     return LoginController;
 }());
