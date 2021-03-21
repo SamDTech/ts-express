@@ -1,3 +1,4 @@
+import { Router } from 'express'
 import 'reflect-metadata'
 
 export function get(path: string){
@@ -5,3 +6,4 @@ export function get(path: string){
       Reflect.defineMetadata('path', path, target, key)
   }
 }
+
