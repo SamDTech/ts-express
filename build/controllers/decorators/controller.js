@@ -14,7 +14,20 @@ function bodyValidators() {
     for (var _i = 0; _i < arguments.length; _i++) {
         keys[_i] = arguments[_i];
     }
-    return function (req, res, next) { };
+    return function (req, res, next) {
+        if (!req.body) {
+            res.status(422).send('Invalid request');
+            return;
+        }
+        for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
+            var key = keys_1[_i];
+            if (!req.body[key]) {
+                res.status(422).send('Invalid request');
+                return;
+            }
+        }
+        next();
+    };
 }
 function controller(routePrefix) {
     return function (target) {
@@ -25,8 +38,12 @@ function controller(routePrefix) {
             var method = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.method, target.prototype, key);
             var middlewares = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.middleware, target.prototype, key) ||
                 [];
+            var requiredBodyProps = Reflect.getMetadata(MetadataKeys_1.MetadataKeys.validator, target.prototype, key) ||
+                [];
+            var validator = bodyValidators(requiredBodyProps);
             if (path) {
-                router[method].apply(router, __spreadArray(__spreadArray(["" + routePrefix + path], middlewares), [routeHandler]));
+                router[method].apply(router, __spreadArray(__spreadArray(["" + routePrefix + path], middlewares), [validator,
+                    routeHandler]));
             }
         }
     };
