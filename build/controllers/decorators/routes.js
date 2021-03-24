@@ -8,7 +8,7 @@ function routeBinder(method) {
     return function (path) {
         return function (target, key, desc) {
             Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.path, path, target, key);
-            Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.method, 'get', target, key);
+            Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.method, method, target, key);
         };
     };
 }

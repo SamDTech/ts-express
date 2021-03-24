@@ -1,5 +1,5 @@
-import { RequestHandler } from 'express';
 import 'reflect-metadata';
+import { RequestHandler } from 'express';
 import { MetadataKeys } from './MetadataKeys';
 
 export function use(middleware: RequestHandler) {
@@ -10,6 +10,7 @@ export function use(middleware: RequestHandler) {
     Reflect.defineMetadata(
       MetadataKeys.middleware,
       [...middlewares, middleware],
+      target,
       key
     );
   };
