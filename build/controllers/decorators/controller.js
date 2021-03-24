@@ -9,11 +9,7 @@ exports.controller = void 0;
 require("reflect-metadata");
 var AppRouter_1 = require("../../AppRouter");
 var MetadataKeys_1 = require("./MetadataKeys");
-function bodyValidators() {
-    var keys = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        keys[_i] = arguments[_i];
-    }
+function bodyValidators(keys) {
     return function (req, res, next) {
         if (!req.body) {
             res.status(422).send('Invalid request');
@@ -22,7 +18,7 @@ function bodyValidators() {
         for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
             var key = keys_1[_i];
             if (!req.body[key]) {
-                res.status(422).send('Invalid request');
+                res.status(422).send("Missing Property " + key);
                 return;
             }
         }

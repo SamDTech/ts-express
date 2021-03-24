@@ -9,7 +9,7 @@ function bodyValidator() {
         keys[_i] = arguments[_i];
     }
     return function (target, key, desc) {
-        Reflect.defineProperty(MetadataKeys_1.MetadataKeys.validator, keys, target, key);
+        Reflect.defineMetadata(MetadataKeys_1.MetadataKeys.validator, keys, target, key);
     };
 }
 exports.bodyValidator = bodyValidator;
