@@ -9,21 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var decorators_1 = require("./decorators/");
+var index_1 = require("./decorators/index");
 var LoginController = /** @class */ (function () {
     function LoginController() {
     }
     LoginController.prototype.getLogin = function (req, res) {
-        res.send("\n              <form method='POST' action=''>\n\n                <div>\n                  <label>Email</label>\n                  <input name='email'/>\n                </div>\n\n                <div>\n                  <label>Password</label>\n                  <input name='password' type='password'/>\n                </div>\n              \n                <button type='submit' >Submit</button>\n              </form>\n        ");
+        res.send("\n              <form method='POST' action=''>\n\n                <div>\n                  <label>Email</label>\n                  <input name='email'/>\n                </div>\n\n                <div>\n                  <label>Password</label>\n                  <input name='password' type='password'/>\n                </div>\n                <button type='submit' >Submit</button>\n              </form>\n        ");
     };
     __decorate([
-        decorators_1.get('/login'),
+        index_1.get('/login'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
     ], LoginController.prototype, "getLogin", null);
     LoginController = __decorate([
-        decorators_1.controller('/auth')
+        index_1.controller('/auth')
     ], LoginController);
     return LoginController;
 }());
